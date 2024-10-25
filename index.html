@@ -6,25 +6,24 @@
     <title>2D Interactive Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Howler.js для звуков (если нужны звуки) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-
-    <!-- anime.js для анимаций -->
+    <!-- Подключаем библиотеки для анимаций -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
 <body>
     <!-- Заголовок -->
     <h1 class="title">Мои проекты</h1>
 
-    <!-- Машинка по центру -->
+    <!-- Контейнер для машинки -->
     <div class="map">
         <div id="car" class="car"></div> <!-- Элемент машинки -->
     </div>
 
-    <!-- Проекты, которые будут появляться -->
-    <div class="project" id="project1">Project 1</div>
-    <div class="project" id="project2">Project 2</div>
-    <div class="project" id="project3">Project 3</div>
+    <!-- Контейнер для проектов -->
+    <div id="projects-container" class="projects-container">
+        <div class="project" id="project1">Project 1</div>
+        <div class="project" id="project2">Project 2</div>
+        <div class="project" id="project3">Project 3</div>
+    </div>
 
     <script src="script.js"></script>
 </body>
