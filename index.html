@@ -8,19 +8,60 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
 <body>
-    <!-- Контейнер для заголовка и проектов -->
+    <!-- Контейнер для заголовка -->
     <div class="header-container">
         <h1 class="title">Мои проекты</h1>
-        <div id="projects-container" class="projects-container">
-            <div class="project" id="project1">Project 1</div>
-            <div class="project" id="project2">Project 2</div>
-            <div class="project" id="project3">Project 3</div>
+    </div>
+    
+    <!-- Контейнер для проектов -->
+    <div id="projects-container" class="projects-container">
+        <div class="project-wrapper">
+            <button class="project btn-new" id="project1">Project 1</button>
+            <div class="project-description">Краткое описание первого проекта.</div>
+        </div>
+        <div class="project-wrapper">
+            <button class="project btn-new" id="project2">Project 2</button>
+            <div class="project-description">Краткое описание второго проекта.</div>
+        </div>
+        <div class="project-wrapper">
+            <button class="project btn-new" id="project3">Project 3</button>
+            <div class="project-description">Краткое описание третьего проекта.</div>
+        </div>
+        <div class="project-wrapper">
+            <button class="project btn-new" id="project4">Project 4</button>
+            <div class="project-description">Краткое описание четвертого проекта.</div>
+        </div>
+        <div class="project-wrapper">
+            <button class="project btn-new" id="project5">Project 5</button>
+            <div class="project-description">Краткое описание пятого проекта.</div>
+        </div>
+        <div class="project-wrapper">
+            <button class="project btn-new" id="project6">Project 6</button>
+            <div class="project-description">Краткое описание шестого проекта.</div>
+        </div>
+        <div class="project-wrapper">
+            <button class="project btn-new" id="project7">Project 7</button>
+            <div class="project-description">Краткое описание седьмого проекта.</div>
+        </div>
+        <div class="project-wrapper">
+            <button class="project btn-new" id="project8">Project 8</button>
+            <div class="project-description">Краткое описание восьмого проекта.</div>
         </div>
     </div>
 
     <!-- Контейнер для машинки -->
     <div class="map">
         <div id="car" class="car"></div> <!-- Элемент машинки -->
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modalImg" src="" alt="Project Image">
+            <p id="modalDescription"></p>
+            <a id="modalLink" href="#" target="_blank">Ссылка на проект</a>
+        </div>
     </div>
 
     <script src="script.js"></script>

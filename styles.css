@@ -4,7 +4,7 @@ body, html {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Выравнивание по верхней части */
     align-items: center;
     font-family: Arial, sans-serif;
     overflow: hidden; /* Убираем прокрутку */
@@ -14,40 +14,42 @@ body, html {
 }
 
 .header-container {
-    position: absolute;
-    top: 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    white-space: nowrap; /* Для предотвращения переноса текста */
+    position: fixed; /* Фиксируем заголовок в верхней части */
+    top: 20px; /* Расстояние от верха */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Центрируем заголовок по горизонтали */
+    z-index: 10; /* Помещаем заголовок поверх других элементов */
 }
 
 .title {
     font-size: 2rem;
-    margin-right: 10px;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    transition: transform 1s ease; /* Плавное движение */
 }
 
 .projects-container {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    position: absolute;
-    top: 50px;
+    flex-direction: row; /* Горизонтальное расположение кнопок */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+    position: absolute; /* Положение относительно родителя */
+    top: 100px; /* Увеличиваем расстояние от заголовка до кнопок */
     white-space: nowrap; /* Чтобы проекты не переносились */
+}
+
+.project-wrapper {
+    margin-right: 50px; /* Увеличиваем расстояние между кнопками */
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение кнопки и описания */
+    align-items: center; /* Центрируем элементы внутри обертки */
 }
 
 .project {
     font-size: 1.5rem;
     color: #fff;
-    opacity: 1; /* Теперь они видны постоянно */
-    transform: translateX(100vw); /* Стартовая позиция - за экраном справа */
-    transition: opacity 1s ease, transform 1s ease; /* Плавная анимация */
+    transform: translateX(200vw); /* Стартовая позиция - за экраном справа */
+    transition: transform 3s ease; /* Плавная анимация появления */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     cursor: pointer;
-    margin-right: 300px; /* Расстояние между проектами */
 }
 
 .project:hover {
@@ -55,15 +57,21 @@ body, html {
 }
 
 .project-description {
-    width: 100%;
-    background-color: #fff;
-    color: #000;
-    padding: 10px;
-    margin-top: 10px;
-    text-align: center;
-    font-size: 1rem;
-    border-radius: 5px;
+    max-width: 600px; /* Максимальная ширина */
+    min-width: 300px; /* Минимальная ширина */
+    max-height: 300px; 
+    min-height: 300px; 
+    /*width: 100%; /* Ширина 100% от контейнера */
+    background-color: #fff; /* Белый фон */
+    color: #000; /* Черный текст */
+    padding: 10px; /* Отступы */
+    margin-top: 5px; /* Небольшое расстояние от кнопки */
+    border-radius: 5px; /* Закругленные углы */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта */
+    transform: translateY(10px) translateX(200vw); /* Сдвинуть ниже кнопки и за экран */
+    transition: transform 3s ease; /* Плавная анимация появления */
 }
+
 
 /* Модальное окно */
 .modal {
@@ -117,6 +125,25 @@ body, html {
     color: #333;
 }
 
+.btn-new {
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    background: #0B63F6;
+    box-shadow: 0 5px 0 #003CC5;
+    font-size: 1.5rem; /* Размер шрифта кнопки */
+    padding: 10px 20px; /* Отступы кнопки */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+.btn-new:hover {
+    background: #003CC5;
+    box-shadow: none;
+    position: relative;
+    top: 5px; /* Эффект перемещения вниз при наведении */
+}
+
 /* Контейнер для машинки */
 .map {
     position: relative;
@@ -135,4 +162,5 @@ body, html {
     background-size: cover;
     background-position: center;
     position: absolute;
+    top: 600px;
 }
