@@ -1,56 +1,44 @@
 // Элементы для взаимодействия
-const locations = document.querySelectorAll('.location');
-const overlay = document.getElementById('overlay');
-const closeOverlay = document.getElementById('closeOverlay');
 const car = document.getElementById('car');
+const projects = document.querySelectorAll('.project');
 
-// Определите позицию каждого проекта
-const positions = {
-    project1: { x: 30, y: 20 }, // Позиция Project 1
-    project2: { x: 60, y: 50 }, // Позиция Project 2
-    project3: { x: 40, y: 80 }  // Позиция Project 3
-};
+// Начальные параметры
+let carPosition = 0; // Начальная позиция машинки
+let projectIndex = 0; // Текущий индекс проекта
 
-// Функция для открытия модального окна с информацией о проекте
-locations.forEach(location => {
-    location.addEventListener('click', () => {
-        overlay.style.display = 'flex';
-        document.querySelector('.overlay-content h2').innerText = location.innerText;
-        document.querySelector('.overlay-content p').innerText = `Description of ${location.innerText}`;
-    });
-});
+// Функция для перемещения машинки
+function moveCar(direction) {
+    const moveDistance = 100; // Расстояние перемещения за одно нажатие
 
-// Закрытие модального окна при клике на "x"
-closeOverlay.addEventListener('click', () => {
-    overlay.style.display = 'none';
-});
-
-// Анимация машинки с использованием GSAP и ScrollTrigger
-gsap.registerPlugin(ScrollTrigger);
-
-// Создаем анимацию машинки, которая будет двигаться по проектам при прокрутке
-const carAnimation = gsap.timeline({
-    scrollTrigger: {
-        trigger: ".map",
-        start: "top top", // Начало анимации
-        end: "bottom top", // Конец анимации
-        scrub: true, // Связывает прокрутку с анимацией
-        pin: true, // Закрепляет элемент на экране
-        markers: true // Для отладки, покажите маркеры начала и конца
+    // Перемещаем машинку
+    if (direction === 'right') {
+        carPosition += moveDistance;
+    } else if (direction === 'left' && carPosition > 0) {
+        carPosition -= moveDistance;
     }
-});
 
-// Анимация перемещения машинки
-carAnimation.to(car, {
-    xPercent: positions.project1.x, // Замените координаты по необходимости
-    yPercent: positions.project1.y,
-    duration: 1
-}).to(car, {
-    xPercent: positions.project2.x,
-    yPercent: positions.project2.y,
-    duration: 1
-}).to(car, {
-    xPercent: positions.project3.x,
-    yPercent: positions.project3.y,
-    duration: 1
+    // Обновляем позицию машинки
+    car.style.transform = `translateX(${carPosition}px)`;
+
+    // Показываем следующий проект, если машинка прошла определённое расстояние
+    if (carPosition >= (projectIndex + 1) * 200 && projectIndex < projects.length) {
+        showProject(projects[projectIndex]);
+        projectIndex += 1;
+    }
+}
+
+// Функция для плавного появления проекта
+function showProject(project) {
+    project.style.opacity = 1;
+    project.style.transform = `translateY(50px)`;
+}
+
+// Обработка нажатий клавиш
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'd' || event.key === 'D') {
+        moveCar('right');
+    }
+    if (event.key === 'a' || event.key === 'A') {
+        moveCar('left');
+    }
 });

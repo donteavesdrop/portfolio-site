@@ -1,85 +1,56 @@
-/* Основные настройки */
+/* Общие настройки */
 body, html {
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-family: Arial, sans-serif;
+    overflow: hidden;
+    background-image: url('images/background.jpg'); /* Путь к вашему фоновому изображению */
+    background-size: cover; /* Растянуть изображение на весь экран */
+    background-position: center; /* Центрировать изображение */
+    background-attachment: fixed; /* Зафиксировать изображение */
+}
+
+/* Заголовок */
+.title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #fff; /* Белый цвет для контраста */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Тень для улучшения читаемости */
+}
+
+/* Контейнер для машинки */
+.map {
+    position: relative;
+    width: 100vw;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
 }
 
-.map {
-    position: relative;
-    width: 80vw;
-    height: 80vh;
-    background: url('pexels-kubiceknov-924824.jpg') no-repeat center/cover; 
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Стили для проектов на карте */
-.location {
-    position: absolute;
-    padding: 10px 15px;
-    background-color: #3498db;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-/* Позиционирование каждого проекта */
-#project1 { top: 20%; left: 30%; }
-#project2 { top: 50%; left: 60%; }
-#project3 { top: 80%; left: 40%; }
-
-.location:hover {
-    transform: scale(1.1);
-}
-
-/* Стили для модального окна */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-}
-
-.overlay-content {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    max-width: 400px;
-    position: relative;
-}
-
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* Добавьте это в ваш styles.css */
+/* Стили для машинки */
 .car {
+    width: 250px; /* увеличенный размер машинки */
+    height: 150px;
+    background-image: url('images/car.png'); /* путь к изображению машинки */
+    background-size: cover;
+    background-position: center;
     position: absolute;
-    width: 50px; /* ширина машинки */
-    height: 30px; /* высота машинки */
-    background-image: url('car.png'); /* путь к изображению машинки */
-    background-size: cover; /* масштабирование изображения для заполнения элемента */
-    background-position: center; /* центрирование изображения */
-    transition: transform 0.3s ease;
+    transition: transform 0.1s ease;
 }
 
-
+/* Стили для проектов, которые появляются сверху */
+.project {
+    position: absolute;
+    top: -100px;
+    font-size: 1.5rem;
+    color: #fff; /* Белый цвет текста */
+    opacity: 0; /* Изначально скрыто */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Легкая тень */
+}
