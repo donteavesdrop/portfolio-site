@@ -168,14 +168,22 @@ projects.forEach((project, index) => {
 // Закрытие модального окна
 if (closeModal) {
 closeModal.addEventListener('click', () => {
+    
     modal.style.display = 'none';
+
+    modalNotebook.style.display = 'none';
+    modalNotebook.src = ''; // Очищаем src для сброса состояния
     console.log('Модальное окно закрыто');
+
 });
 }
 if (closeModal) {
 // Закрытие модального окна при клике вне его
 window.addEventListener('click', (event) => {
+    
     if (event.target === modal) {
+        modalNotebook.style.display = 'none';
+        modalNotebook.src = ''; // Очищаем src для сброса состояния
         modal.style.display = 'none';
         console.log('Модальное окно закрыто');
     }
