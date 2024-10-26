@@ -30,25 +30,34 @@ const projectData = [
         link: "https://github.com/donteavesdrop/Mirea_Project"
     },
     {
-        title: "Project 2",
-        description: "Описание второго проекта. Еще один классный проект!",
+        title: "ProceduralGen",
+        description: `Этот проект демонстрирует базовую реализацию процедурной генерации ландшафта с использованием шума Перлина на Python с библиотекой Pygame.<br><br> Генерируется 2D-игровой мир, который делится на чанки, каждый из которых содержит разные типы тайлов <br>(например, почва, пустое пространство, враги, ресурсы). <br>Игрок может перемещаться по миру, и новые чанки создаются динамически по мере того, как игрок приближается к границам текущих загруженных чанков.
+        `,
         type: "image", 
-        img: "images/project2.png",
-        link: "https://github.com/yourprofile/project2"
+        img: "images/gen.png",
+        link: "https://github.com/donteavesdrop/ProceduralGen2"
     },
     {
-        title: "Project 3",
-        description: "Описание третьего проекта. Это очень интересный проект!",
-        type: "image", 
-        img: "images/project3.png",
-        link: "https://github.com/yourprofile/project3"
+        title: "Hackaton front",
+        description: `
+        Проект представляет собой фронтенд-приложение для управления задачами сотрудников в компании. <br><br>Пользователь входит в систему, после чего может выполнять следующие действия:<br><br>
+        
+        Управление задачами: просмотр и распределение задач между сотрудниками.<br><br>
+        Отчеты: доступ к данным о среднем времени выполнения задач, времени в пути и количеству завершенных задач для каждого сотрудника.<br><br>
+        Точки бизнеса: просмотр списка бизнес-точек (например, филиалов или офисов) с их адресами.<br><br>
+        Сотрудники: просмотр информации о сотрудниках, включая их имена и должности.<br><br>
+        Каждый компонент проверяет наличие токена авторизации, чтобы защитить данные от неавторизованного доступа.
+        `,
+        type: "video", 
+        videoUrl: "videos/react.mp4", // Ссылка на видео файл
+        link: "https://github.com/donteavesdrop/hackaton-front"
     },
     {
-        title: "Project 4",
-        description: "Описание третьего проекта. Это очень интересный проект!",
-        type: "image", 
-        img: "images/project4.png",
-        link: "https://github.com/yourprofile/project4"
+        title: "Генеративно-состязательные сети",
+        description: "Обучение GAN",
+        type: "ipynb", 
+        notebookUrl: 'gan.html',
+        link: "https://github.com/donteavesdrop/generative-models/tree/main"
     }
 ];
 
@@ -143,6 +152,9 @@ projects.forEach((project, index) => {
             } else if (data.type === "video") {
             modalVideo.src = data.videoUrl; // Устанавливаем видео
             modalVideo.style.display = 'block'; // Делаем видео видимым
+            } else if (data.type === "ipynb") {
+            modalNotebook.src = data.notebookUrl; // Устанавливаем URL для iframe
+            modalNotebook.style.display = 'block'; // Делаем iframe видимым
             }
 
             // Отображение модального окна

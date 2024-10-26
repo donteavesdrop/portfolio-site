@@ -22,19 +22,20 @@
     <div id="projects-container" class="projects-container">
         <div class="project-wrapper">
             <button class="project btn-new" id="project1">Android-приложение на Java</button>
-            <div class="project-description">Приложение для создания постов,<br> оформления профиля<br> и прослушивания музыки </div>
+            <div class="project-description">Приложение для создания постов,<br> оформления профиля<br> и прослушивания музыки <br><br> -Java</div>
         </div>
         <div class="project-wrapper">
-            <button class="project btn-new" id="project2">Project 2</button>
-            <div class="project-description">Краткое описание второго проекта.</div>
+            <button class="project btn-new" id="project2">ProceduralGen</button>
+            <div class="project-description">Генерация процедурного ландшафта <br>с использованием Pygame<br><br> -Python</div>
         </div>
         <div class="project-wrapper">
-            <button class="project btn-new" id="project3">Project 3</button>
-            <div class="project-description">Краткое описание третьего проекта.</div>
+            <button class="project btn-new" id="project3">Hackaton front</button>
+            <div class="project-description">
+                Фронтенд-приложение<br> для управления задачами сотрудников, <br>включающее авторизацию, <br>просмотр, распределение задач и т.д.<br><br> -React</div>
         </div>
         <div class="project-wrapper">
-            <button class="project btn-new" id="project4">Project 4</button>
-            <div class="project-description">Краткое описание четвертого проекта.</div>
+            <button class="project btn-new" id="project4">Генеративно-состязательные сети</button>
+            <div class="project-description">Использованы библиотеки   <br>PyTorch и TorchVision для обучения GAN<br><br> -Python</div>
         </div>
         
     </div>
@@ -59,6 +60,7 @@
                 <div class="modal-media">
                     <img id="modalImg" src="" alt="Project Image" style="display: none;">
                     <video id="modalVideo" controls style="display: none;"></video>
+                    <iframe id="modalNotebook" src="" style="display: none; width: 100%; height: 600px; border: none;"></iframe>
                 </div>
                 <div class="modal-info">
                     <p id="modalDescription"></p>
@@ -69,5 +71,19 @@
     </div>
 
     <script src="script.js"></script>
+    <div id="controls" class="controls">
+        УПРАВЛЕНИЕ <br><br> Нажмите "D" для просмотра следующего проекта, "A" - для предыдущего проекта<br>  и ракета полетит в нужном вам направлении :З<br> <br>  Названия проектов кликабельны
+    </div>
+
+    <div id="developer-profile" class="developer-profile">
+        <img src="images/sticker.webp" alt="Ваше имя" class="profile-picture"> <!-- Замените на свой путь к изображению -->
+        <div class="profile-info">
+            <p>Захарова Екатерина<br> fullstack developer</p>
+            <a href="https://hh.ru/resume/4fbbdd4bff091d23030039ed1f37437332376e" target="_blank">Резюме</a>  
+            <a href="https://github.com/donteavesdrop?tab=repositories" target="_blank">GitHub</a>
+        </div>
+    </div>
+    
+    
 </body>
 </html>
