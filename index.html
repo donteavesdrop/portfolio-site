@@ -10,14 +10,19 @@
 <body>
     <!-- Контейнер для заголовка -->
     <div class="header-container">
-        <h1 class="title">Мои проекты</h1>
+        <h1 class="glitch">
+            <span aria-hidden="true">My Projects</span>
+            My Projects
+            <span aria-hidden="true">My Projects</span>
+        </h1>
     </div>
+    
     
     <!-- Контейнер для проектов -->
     <div id="projects-container" class="projects-container">
         <div class="project-wrapper">
-            <button class="project btn-new" id="project1">Project 1</button>
-            <div class="project-description">Краткое описание первого проекта.</div>
+            <button class="project btn-new" id="project1">Android-приложение на Java</button>
+            <div class="project-description">Приложение для создания постов,<br> оформления профиля<br> и прослушивания музыки </div>
         </div>
         <div class="project-wrapper">
             <button class="project btn-new" id="project2">Project 2</button>
@@ -31,25 +36,35 @@
             <button class="project btn-new" id="project4">Project 4</button>
             <div class="project-description">Краткое описание четвертого проекта.</div>
         </div>
-        <div class="project-wrapper">
-            <button class="project btn-new" id="project5">Project 5</button>
-            <div class="project-description">Краткое описание пятого проекта.</div>
-        </div>
         
     </div>
 
     <!-- Контейнер для машинки -->
     <div class="map">
+        <div class="flame-container"  style="display: none;">
+            <div class="tenor-gif-embed" data-postid="17891817" data-share-method="host" data-aspect-ratio="1" data-width="100%">
+                <a href="https://tenor.com/view/35524757372-flame-fire-purple-gif-17891817">35524757372 Flame Sticker</a> from <a href="https://tenor.com/search/35524757372-stickers">35524757372 Stickers</a>
+            </div>
+        </div>
         <div id="car" class="car"></div> <!-- Элемент машинки -->
     </div>
+    <!-- Скрипт для вставки гифки -->
+   <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
-    <!-- Модальное окно -->
+   
     <div id="projectModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <img id="modalImg" src="" alt="Project Image">
-            <p id="modalDescription"></p>
-            <a id="modalLink" href="#" target="_blank">Ссылка на проект</a>
+            <div class="modal-body">
+                <div class="modal-media">
+                    <img id="modalImg" src="" alt="Project Image" style="display: none;">
+                    <video id="modalVideo" controls style="display: none;"></video>
+                </div>
+                <div class="modal-info">
+                    <p id="modalDescription"></p>
+                    <a id="modalLink" href="#" target="_blank">Ссылка на проект</a>
+                </div>
+            </div>
         </div>
     </div>
 

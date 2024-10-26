@@ -21,24 +21,80 @@ body, html {
     z-index: 10; /* Помещаем заголовок поверх других элементов */
 }
 
-.title {
-    font-size: 2rem;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+.glitch {
+    font-size: 5rem; /* Размер шрифта заголовка */
+    font-weight: bold;
+    text-transform: uppercase; /* Все буквы заглавные */
+    position: relative;
+    text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+        0.025em 0.04em 0 #fffc00; /* Эффект тени */
+    animation: glitch 725ms infinite; /* Анимация глитча */
 }
+
+.glitch span {
+    position: absolute; /* Абсолютное позиционирование для эффекта */
+    top: 0;
+    left: 0;
+}
+
+.glitch span:first-child {
+    animation: glitch 500ms infinite; /* Анимация для первого span */
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%); /* Обрезка */
+    transform: translate(-0.04em, -0.03em); /* Сдвиг */
+    opacity: 0.75; /* Прозрачность */
+}
+
+.glitch span:last-child {
+    animation: glitch 375ms infinite; /* Анимация для последнего span */
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%); /* Обрезка */
+    transform: translate(0.04em, 0.03em); /* Сдвиг */
+    opacity: 0.75; /* Прозрачность */
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 rgba(140, 133, 255, 1), -0.03em -0.04em 0 rgba(254, 169, 255, 1),
+            0.025em 0.04em 0 rgba(236, 236, 236, 1); /* Статичное состояние */
+    }
+    15% {
+        text-shadow: 0.05em 0 0 rgba(140, 133, 255, 1), -0.03em -0.04em 0 rgba(254, 169, 255, 1),
+            0.025em 0.04em 0 rgba(236, 236, 236, 1); /* Статичное состояние */
+    }
+    16% {
+        text-shadow: -0.05em -0.025em 0 rgba(140, 133, 255, 1), 0.025em 0.035em 0 rgba(254, 169, 255, 1),
+            -0.05em -0.05em 0 rgba(236, 236, 236, 1); /* Анимация */
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 rgba(140, 133, 255, 1), 0.025em 0.035em 0 rgba(254, 169, 255, 1),
+            -0.05em -0.05em 0 rgba(236, 236, 236, 1); /* Анимация */
+    }
+    50% {
+        text-shadow: 0.05em 0.035em 0 rgba(140, 133, 255, 1), 0.03em 0 0 rgba(254, 169, 255, 1),
+            0 -0.04em 0 rgba(236, 236, 236, 1); /* Анимация */
+    }
+    99% {
+        text-shadow: 0.05em 0.035em 0 rgba(140, 133, 255, 1), 0.03em 0 0 rgba(254, 169, 255, 1),
+            0 -0.04em 0 rgba(236, 236, 236, 1); /* Анимация */
+    }
+    100% {
+        text-shadow: -0.05em 0 0 rgba(140, 133, 255, 1), -0.025em -0.04em 0 rgba(254, 169, 255, 1),
+            -0.04em -0.025em 0 rgba(236, 236, 236, 1); /* Анимация */
+    }
+}
+
 
 .projects-container {
     display: flex;
     flex-direction: row; /* Горизонтальное расположение кнопок */
     align-items: flex-start; /* Выравнивание по верхнему краю */
     position: absolute; /* Положение относительно родителя */
-    top: 100px; /* Увеличиваем расстояние от заголовка до кнопок */
+    top: 300px; /* Увеличиваем расстояние от заголовка до кнопок */
     white-space: nowrap; /* Чтобы проекты не переносились */
     z-index: 10;
 }
 
 .project-wrapper {
-    margin-right: 50px; /* Увеличиваем расстояние между кнопками */
+    margin-right: 100px; /* Увеличиваем расстояние между кнопками */
     display: flex;
     flex-direction: column; /* Вертикальное расположение кнопки и описания */
     align-items: center; /* Центрируем элементы внутри обертки */
@@ -48,9 +104,14 @@ body, html {
     font-size: 1.5rem;
     color: #fff;
     transform: translateX(200vw); /* Стартовая позиция - за экраном справа */
-    transition: transform 3s ease; /* Плавная анимация появления */
+    transition: transform 4s ease, opacity 0.5s ease;  /* Плавная анимация появления */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     cursor: pointer;
+}
+
+.project.visible {
+    opacity: 1; /* Полная непрозрачность при видимости */
+    transform: translateX(0); /* Возвращаем на экран */
 }
 
 .project:hover {
@@ -60,17 +121,27 @@ body, html {
 .project-description {
     max-width: 600px; /* Максимальная ширина */
     min-width: 300px; /* Минимальная ширина */
-    max-height: 300px; 
-    min-height: 300px; 
+    max-height: 200px; 
+    min-height: 100px; 
     /*width: 100%; /* Ширина 100% от контейнера */
-    background-color: #fff; /* Белый фон */
+    /*background-color: #fff;  Белый фон */
+    background: rgb(140,133,255);
+    background: linear-gradient(61deg, rgba(140,133,255,1) 0%, rgba(236,236,236,1) 37%, rgba(254,169,255,1) 100%);
     color: #000; /* Черный текст */
     padding: 10px; /* Отступы */
     margin-top: 20px; /* Небольшое расстояние от кнопки */
     border-radius: 5px; /* Закругленные углы */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта */
     transform: translateY(10px) translateX(200vw); /* Сдвинуть ниже кнопки и за экран */
-    transition: transform 3s ease; /* Плавная анимация появления */
+    transition: transform 4s ease, opacity 0.5s ease;  /* Плавная анимация появления */
+    line-height: 1.5; /* Межстрочный интервал */
+    font-family: 'Arial', sans-serif; /* Шрифт */
+    text-align: justify; /* Выравнивание текста по ширине */
+    letter-spacing: 0.5px; /* Расстояние между буквами */
+}
+.project-description.visible {
+    opacity: 1; /* Полная непрозрачность при видимости */
+    transform: translateY(0) translateX(0); /* Возвращаем на экран */
 }
 
 .btn-new {
@@ -78,15 +149,15 @@ body, html {
     border-radius: 10px;
     text-decoration: none;
     color: white;
-    background: #0B63F6;
-    box-shadow: 0 5px 0 #003CC5;
+    background: rgb(140,133,255);
+    box-shadow: 0 5px 0 #fbdeff;
     font-size: 1.5rem; /* Размер шрифта кнопки */
     padding: 10px 20px; /* Отступы кнопки */
     cursor: pointer; /* Указатель при наведении */
 }
 
 .btn-new:hover {
-    background: #003CC5;
+    background: rgb(140,133,255);
     box-shadow: none;
     position: relative;
     top: 5px; /* Эффект перемещения вниз при наведении */
@@ -94,47 +165,89 @@ body, html {
 
 /* Модальное окно */
 .modal {
-    display: none; /* Скрыто по умолчанию */
-    position: fixed; /* Фиксированное положение */
-    z-index: 100; /* Высокий z-index, чтобы быть поверх всех элементов */
+    display: none;
+    position: fixed;
+    z-index: 100; /* Высокий приоритет отображения */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7); /* Затемняющий фон */
-    justify-content: center; /* Центрирование содержимого */
-    align-items: center; /* Центрирование содержимого */
+    justify-content: center;
+    align-items: center;
 }
 
+/* Контент модального окна */
 .modal-content {
-    background-color: #fff; /* Белый фон для контента */
+    background: rgb(210,207,255);
+    background: linear-gradient(61deg, rgba(210,207,255,1) 0%, rgba(236,236,236,1) 37%, rgba(252,220,252,1) 100%);
     padding: 20px;
     border-radius: 10px;
-    width: 80%;
-    max-width: 600px; /* Максимальная ширина */
+    width: 90%;
+    max-width: 800px; /* Максимальная ширина окна */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Тело модального окна */
+.modal-body {
+    display: flex; /* Контейнер для двух колонок */
+    gap: 20px;
+    align-items: center;
+}
+
+/* Левая колонка с медиа (фото или видео) */
+.modal-media {
+    flex: 1;
+    max-width: 50%; /* Ограничиваем до 45% ширины */
+}
+
+.modal img,
+.modal video {
+    max-width: 100%;
+    max-height: 600px; /* Ограничение высоты */
+    border-radius: 8px;
+}
+
+/* Правая колонка с описанием и ссылкой */
+.modal-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    text-align: left;
+}
+
+.modal-info p {
+    margin: 0;
+    font-size: 1rem; /* Размер шрифта */
+    color: #333; /* Цвет текста */
+    line-height: 1.5; /* Межстрочный интервал */
+    font-family: 'Arial', sans-serif; /* Шрифт */
+    text-align: justify; /* Выравнивание текста по ширине */
+    letter-spacing: 0.5px; /* Расстояние между буквами */
+    padding: 10px 0; /* Отступ сверху и снизу */
+}
+
+.modal-info a {
+    display: inline-block;
+    padding: 10px 20px;
+    color: rgb(0, 0, 0);
+    background-color:rgb(140,133,255);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    max-width: 150px;
     text-align: center;
 }
 
-.modal img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 15px;
+.modal-info a:hover {
+    background-color: rgb(180, 176, 255);
 }
 
-.modal a {
-    display: inline-block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: #000;
-    background-color: #f0f0f0;
-    padding: 10px 20px;
-    border-radius: 5px;
-}
-
-.modal a:hover {
-    background-color: #e0e0e0;
-}
-
+/* Кнопка закрытия */
 .close {
     position: absolute;
     top: 10px;
@@ -143,7 +256,6 @@ body, html {
     cursor: pointer;
     color: #333;
 }
-
 
 
 /* Контейнер для машинки */
@@ -156,6 +268,13 @@ body, html {
     align-items: center;
 }
 
+.flame-container {
+    position: absolute; /* Позволяем расположить гифку независимо от других элементов */
+    bottom: 0; /* Позиционируем внизу контейнера */
+    left: calc(50% - 150px); /* Центрируем по горизонтали и отодвигаем влево */
+    transform: translateX(-50%); /* Центрируем по горизонтали */
+}
+
 /* Стили машинки */
 .car {
     width: 250px;
@@ -164,5 +283,8 @@ body, html {
     background-size: cover;
     background-position: center;
     position: absolute;
-    top: 600px;
+    top: 600px; /* Позиция сверху */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Центрируем по горизонтали */
 }
+
