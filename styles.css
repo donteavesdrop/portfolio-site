@@ -34,6 +34,7 @@ body, html {
     position: absolute; /* Положение относительно родителя */
     top: 100px; /* Увеличиваем расстояние от заголовка до кнопок */
     white-space: nowrap; /* Чтобы проекты не переносились */
+    z-index: 10;
 }
 
 .project-wrapper {
@@ -65,34 +66,52 @@ body, html {
     background-color: #fff; /* Белый фон */
     color: #000; /* Черный текст */
     padding: 10px; /* Отступы */
-    margin-top: 5px; /* Небольшое расстояние от кнопки */
+    margin-top: 20px; /* Небольшое расстояние от кнопки */
     border-radius: 5px; /* Закругленные углы */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта */
     transform: translateY(10px) translateX(200vw); /* Сдвинуть ниже кнопки и за экран */
     transition: transform 3s ease; /* Плавная анимация появления */
 }
 
+.btn-new {
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    background: #0B63F6;
+    box-shadow: 0 5px 0 #003CC5;
+    font-size: 1.5rem; /* Размер шрифта кнопки */
+    padding: 10px 20px; /* Отступы кнопки */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+.btn-new:hover {
+    background: #003CC5;
+    box-shadow: none;
+    position: relative;
+    top: 5px; /* Эффект перемещения вниз при наведении */
+}
 
 /* Модальное окно */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Фиксированное положение */
+    z-index: 100; /* Высокий z-index, чтобы быть поверх всех элементов */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7); /* Затемняющий фон */
+    justify-content: center; /* Центрирование содержимого */
+    align-items: center; /* Центрирование содержимого */
 }
 
 .modal-content {
-    background-color: #fff;
+    background-color: #fff; /* Белый фон для контента */
     padding: 20px;
     border-radius: 10px;
     width: 80%;
-    max-width: 600px;
+    max-width: 600px; /* Максимальная ширина */
     text-align: center;
 }
 
@@ -125,24 +144,7 @@ body, html {
     color: #333;
 }
 
-.btn-new {
-    border: none;
-    border-radius: 10px;
-    text-decoration: none;
-    color: white;
-    background: #0B63F6;
-    box-shadow: 0 5px 0 #003CC5;
-    font-size: 1.5rem; /* Размер шрифта кнопки */
-    padding: 10px 20px; /* Отступы кнопки */
-    cursor: pointer; /* Указатель при наведении */
-}
 
-.btn-new:hover {
-    background: #003CC5;
-    box-shadow: none;
-    position: relative;
-    top: 5px; /* Эффект перемещения вниз при наведении */
-}
 
 /* Контейнер для машинки */
 .map {

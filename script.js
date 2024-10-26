@@ -29,54 +29,35 @@ const projectData = [
         link: "https://github.com/yourprofile/project3"
     },
     {
-        title: "Project 3",
+        title: "Project 4",
         description: "Описание третьего проекта. Это очень интересный проект!",
-        img: "images/project3.png",
-        link: "https://github.com/yourprofile/project3"
+        img: "images/project4.png",
+        link: "https://github.com/yourprofile/project4"
     },
     {
-        title: "Project 3",
+        title: "Project 5",
         description: "Описание третьего проекта. Это очень интересный проект!",
-        img: "images/project3.png",
-        link: "https://github.com/yourprofile/project3"
-    },
-    {
-        title: "Project 3",
-        description: "Описание третьего проекта. Это очень интересный проект!",
-        img: "images/project3.png",
-        link: "https://github.com/yourprofile/project3"
-    },
-    {
-        title: "Project 3",
-        description: "Описание третьего проекта. Это очень интересный проект!",
-        img: "images/project3.png",
-        link: "https://github.com/yourprofile/project3"
-    },
-    {
-        title: "Project 3",
-        description: "Описание третьего проекта. Это очень интересный проект!",
-        img: "images/project3.png",
-        link: "https://github.com/yourprofile/project3"
+        img: "images/project5.png",
+        link: "https://github.com/yourprofile/project5"
     }
 ];
 
-let currentPosition = 0; // Начальная позиция
-const speed = 10; // Скорость движения (чем меньше значение, тем медленнее)
+let currentPosition = 0;
+const speed = 10;
 
-// Проверка загрузки скрипта
 console.log('Script is loaded');
 
 // Функция для движения вперед
 function moveForward() {
-    currentPosition -= speed; // Сдвигаем все элементы влево
-    updateProjectPositions(); // Обновляем позиции проектов
+    currentPosition -= speed;
+    updateProjectPositions();
     console.log('Двигаемся вперед, текущая позиция:', currentPosition);
 }
 
 // Функция для движения назад
 function moveBackward() {
-    currentPosition += speed; // Сдвигаем все элементы вправо
-    updateProjectPositions(); // Обновляем позиции проектов
+    currentPosition += speed;
+    updateProjectPositions();
     console.log('Двигаемся назад, текущая позиция:', currentPosition);
 }
 
@@ -98,71 +79,54 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-
-// Проверяем, что длина массива projectData соответствует количеству кнопок
-if (projects.length > projectData.length) {
-    console.warn('Количество кнопок больше, чем количество данных проектов.');
-}
-else{
-    console.log('все норм'); 
-}
-
-// Открытие модального окна с деталями проекта
-// projects.forEach((project, index) => {
-//     console.log('мы в цикле');
-//     project.addEventListener('click', () => {
-//         console.log('нажата кнопка', projectData[index]);
-//         const data = projectData[index];
-//         modalImg.src = data.img;
-//         modalDescription.textContent = data.description;
-//         modalLink.href = data.link;
-//         modal.style.display = 'flex'; // Показываем модальное окно
-//     });
-// });
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Получаем элементы проектов
-    const projects = document.querySelectorAll('.project');
     console.log('Количество кнопок:', projects.length);
-    
-    // Проверяем, что длина массива projectData соответствует количеству кнопок
+
     if (projects.length > projectData.length) {
         console.warn('Количество кнопок больше, чем количество данных проектов.');
     } else {
-        console.log('все норм'); 
+        console.log('Все нормально, количество совпадает.');
     }
 
-    // Обработка нажатий на кнопки
-    projects.forEach((project, index) => {
-        console.log(`Обработчик добавлен для кнопки ${index + 1}`);
-        project.addEventListener('click', () => {
-            if (index < projectData.length) {
-                const data = projectData[index];
-                console.log('нажата кнопка', data);
-                modalImg.src = data.img;
-                modalDescription.textContent = data.description;
-                modalLink.href = data.link;
-                modal.style.display = 'flex'; // Показываем модальное окно
-            } else {
-                console.error('Нет данных для проекта с индексом:', index);
-            }
-        });
-    });
-
-    // Закрытие модального окна
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none'; // Скрываем модальное окно
-        console.log('Модальное окно закрыто');
-    });
+    
 });
 
+// Обработка нажатий на кнопки
+projects.forEach((project, index) => {
+    console.log(`Обработчик добавлен для кнопки ${index + 1}`);
+    
+    // Check if the project data exists for this index
+    if (index < projectData.length) {
+        project.addEventListener('click', () => {
+            const data = projectData[index];
+            console.log('Нажата кнопка', data);
+
+            // Update modal content
+            modalImg.src = data.img;
+            modalDescription.textContent = data.description;
+            modalLink.href = data.link;
+
+            // Display modal
+            modal.style.display = 'flex';
+        });
+    } else {
+        console.error('Нет данных для проекта с индексом:', index);
+    }
+});
 
 // Закрытие модального окна
+if (closeModal) {
 closeModal.addEventListener('click', () => {
-    modal.style.display = 'none'; // Скрываем модальное окно
+    modal.style.display = 'none';
+    console.log('Модальное окно закрыто');
 });
-
-
-document.addEventListener('click', (event) => {
-    console.log('Click event:', event);
+}
+if (closeModal) {
+// Закрытие модального окна при клике вне его
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+        console.log('Модальное окно закрыто');
+    }
 });
+}
