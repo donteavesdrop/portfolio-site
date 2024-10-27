@@ -284,3 +284,106 @@ body, html {
 
 .nav-btn.left { left: 10px; }
 .nav-btn.right { right: 10px; }
+
+
+/* Контейнер для машинки */
+.map {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flame-container {
+    position: absolute; /* Позволяем расположить гифку независимо от других элементов */
+    bottom: 0; /* Позиционируем внизу контейнера */
+    left: calc(50% - 150px); /* Центрируем по горизонтали и отодвигаем влево */
+    transform: translateX(-50%); /* Центрируем по горизонтали */
+}
+
+/* Стили машинки */
+.car {
+    width: 40px;
+    height: 40px;
+    background-image: url('images/car2.png'); /* путь к изображению машинки */
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 80px; /* Позиция сверху */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Центрируем по горизонтали */
+}
+
+
+.controls {
+    position: fixed; /* Фиксируем элемент на экране */
+    bottom: 20px; /* Расположение от нижнего края */
+    right: 20px; /* Расположение от правого края */
+    background-color: rgba(0, 0, 0, 0.322); /* Полупрозрачный черный фон */
+    color: white; /* Цвет текста */
+    padding: 10px 15px; /* Отступы для удобства чтения */
+    border-radius: 5px; /* Закругленные углы */
+    font-size: 14px; /* Размер шрифта */
+    z-index: 1000; /* Убедитесь, что элемент поверх других */
+    transition: opacity 0.5s; /* Плавное изменение прозрачности */
+    opacity: 0.9; /* Начальная прозрачность */
+    text-align: center;
+    z-index: 1;
+}
+
+/* Показать при наведении */
+.controls:hover {
+    opacity: 1; /* Полная видимость при наведении */
+}
+
+
+.developer-profile {
+    display: flex; /* Используем flexbox для выравнивания элементов */
+    align-items: center; /* Вертикальное выравнивание по центру */
+    position: fixed; /* Фиксируем элемент на экране */
+    bottom: 20px; /* Расположение от нижнего края */
+    left: 20px; /* Расположение от левого края */
+    background-color: rgba(0, 0, 0, 0.322); /* Полупрозрачный фон */
+    color: white; /* Цвет текста */
+    padding: 10px 15px; /* Отступы для удобства чтения */
+    border-radius: 5px; /* Закругленные углы */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Тень для выделения */
+    font-size: 14px; /* Размер шрифта */
+    z-index: 1000; /* Убедитесь, что элемент поверх других */
+    transition: opacity 0.5s; /* Плавное изменение прозрачности */
+    opacity: 1; /* Начальная прозрачность */
+    z-index: 1;
+}
+
+/* Стили для изображения профиля */
+.profile-picture {
+    width: 60px; /* Ширина изображения */
+    height: 50px; /* Высота изображения */
+    border-radius: 50%; /* Круглая форма */
+    margin-right: 10px; /* Отступ справа от изображения */
+}
+
+/* Стили для текстовой информации */
+.profile-info {
+    display: flex; /* Используем flexbox для выравнивания текста */
+    flex-direction: column; /* Вертикальное расположение элементов */
+}
+
+/* Стили для ссылок */
+.developer-profile a {
+    color: #c300ff; /* Цвет ссылок */
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+/* Стили для ссылок при наведении */
+.developer-profile a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+    color: #5900ff; /* Цвет ссылок при наведении */
+}
+
+/* Показать при наведении */
+.developer-profile:hover {
+    opacity: 1; /* Полная видимость при наведении */
+}
