@@ -99,3 +99,7 @@ h1 {
     cursor: pointer;
     color: #333;
 }
+
+.controls {
+    display: none; 
+}
