@@ -7,8 +7,9 @@ const modalImg = document.getElementById('modalImg');
 const modalDescription = document.getElementById('modalDescription');
 const modalLink = document.getElementById('modalLink');
 const closeModal = document.querySelector('.close');
+const controlsDiv = document.getElementById('controls');
 
-
+controlsDiv.innerHTML = 'УПРАВЛЕНИЕ <br><br>Пролистните, чтобы увидеть проекты :З<br>Названия кликабельны';
 // Данные о проектах
 const projectData = [
     {
