@@ -5,10 +5,10 @@ body, html {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Выравнивание по верхней части */
+    justify-content: flex-start;
     align-items: center;
     font-family: Arial, sans-serif;
-    overflow: hidden; /* Убираем прокрутку */
+    overflow: hidden;
     background-image: url('images/background.jpg');
     background-size: cover;
     background-position: center;
@@ -16,72 +16,71 @@ body, html {
 
 /* Заголовок */
 .header-container {
-    position: fixed; /* Фиксируем заголовок в верхней части */
-    top: 10px; /* Расстояние от верха */
-    left: 50%; /* Центрируем по горизонтали */
-    transform: translateX(-50%); /* Центрируем заголовок по горизонтали */
-    z-index: 10; /* Помещаем заголовок поверх других элементов */
+    position: fixed;
+    top: 5px; /* Уменьшено расстояние от верхнего края */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
 }
 
 .glitch {
-    font-size: 2rem; /* Уменьшаем размер шрифта заголовка для мобильных */
+    font-size: 1.5rem; /* Уменьшен размер шрифта заголовка */
     font-weight: bold;
-    text-transform: uppercase; /* Все буквы заглавные */
+    text-transform: uppercase;
     position: relative;
-    text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-        0.025em 0.04em 0 #fffc00; /* Эффект тени */
-    animation: glitch 725ms infinite; /* Анимация глитча */
+    text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff, 0.025em 0.04em 0 #fffc00;
+    animation: glitch 725ms infinite;
 }
 
 .glitch span {
-    position: absolute; /* Абсолютное позиционирование для эффекта */
+    position: absolute;
     top: 0;
     left: 0;
 }
 
 .glitch span:first-child {
-    animation: glitch 500ms infinite; /* Анимация для первого span */
-    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%); /* Обрезка */
-    transform: translate(-0.04em, -0.03em); /* Сдвиг */
-    opacity: 0.75; /* Прозрачность */
+    animation: glitch 500ms infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+    transform: translate(-0.04em, -0.03em);
+    opacity: 0.75;
 }
 
 .glitch span:last-child {
-    animation: glitch 375ms infinite; /* Анимация для последнего span */
-    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%); /* Обрезка */
-    transform: translate(0.04em, 0.03em); /* Сдвиг */
-    opacity: 0.75; /* Прозрачность */
+    animation: glitch 375ms infinite;
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+    transform: translate(0.04em, 0.03em);
+    opacity: 0.75;
 }
 
 /* Проекты */
 .projects-container {
     display: flex;
-    flex-direction: column; /* Вертикальное расположение кнопок для мобильных */
-    align-items: center; /* Центрируем элементы внутри обертки */
-    position: absolute; /* Положение относительно родителя */
-    top: 150px; /* Уменьшаем расстояние от заголовка до кнопок */
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 100px; /* Уменьшено расстояние от заголовка */
     z-index: 10;
 }
 
 .project-wrapper {
-    margin-bottom: 20px; /* Уменьшаем расстояние между кнопками */
+    margin-bottom: 10px; /* Уменьшено расстояние между проектами */
     display: flex;
-    flex-direction: column; /* Вертикальное расположение кнопки и описания */
-    align-items: center; /* Центрируем элементы внутри обертки */
+    flex-direction: column;
+    align-items: center;
 }
 
 .project {
-    font-size: 1.2rem; /* Уменьшаем размер шрифта для мобильных */
+    font-size: 1rem; /* Уменьшен размер шрифта */
     color: #fff;
-    transform: translateX(200vw); /* Стартовая позиция - за экраном справа */
-    transition: transform 4s ease, opacity 0.5s ease;  /* Плавная анимация появления */
+    transform: translateX(200vw);
+    transition: transform 4s ease, opacity 0.5s ease;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     cursor: pointer;
 }
 
 .project.visible {
-    opacity: 1; /* Полная непрозрачность при видимости */
-    transform: translateX(0); /* Возвращаем на экран */
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .project:hover {
@@ -90,22 +89,22 @@ body, html {
 
 /* Описание проекта */
 .project-description {
-    max-width: 90%; /* Максимальная ширина для мобильных */
+    max-width: 90%;
     background: linear-gradient(61deg, rgba(140,133,255,1) 0%, rgba(236,236,236,1) 37%, rgba(254,169,255,1) 100%);
-    color: #000; /* Черный текст */
-    padding: 10px; /* Отступы */
-    margin-top: 10px; /* Небольшое расстояние от кнопки */
-    border-radius: 5px; /* Закругленные углы */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта */
-    line-height: 1.5; /* Межстрочный интервал */
-    text-align: justify; /* Выравнивание текста по ширине */
-    letter-spacing: 0.5px; /* Расстояние между буквами */
-    opacity: 0; /* Начальная непрозрачность */
-    transition: opacity 0.5s ease; /* Плавная анимация появления */
+    color: #000;
+    padding: 8px; /* Уменьшен отступ внутри описания */
+    margin-top: 5px; /* Меньше расстояние сверху */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    line-height: 1.5;
+    text-align: justify;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 .project-description.visible {
-    opacity: 1; /* Полная непрозрачность при видимости */
+    opacity: 1;
 }
 
 /* Кнопка */
@@ -116,28 +115,28 @@ body, html {
     color: white;
     background: rgb(140,133,255);
     box-shadow: 0 5px 0 #fbdeff;
-    font-size: 1.2rem; /* Уменьшаем размер шрифта кнопки */
-    padding: 10px 15px; /* Отступы кнопки */
-    cursor: pointer; /* Указатель при наведении */
+    font-size: 1rem; /* Уменьшен размер шрифта */
+    padding: 8px 10px; /* Уменьшены отступы */
+    cursor: pointer;
 }
 
 .btn-new:hover {
     background: rgb(140,133,255);
     box-shadow: none;
     position: relative;
-    top: 2px; /* Эффект перемещения вниз при наведении */
+    top: 2px;
 }
 
 /* Модальное окно */
 .modal {
     display: none;
     position: fixed;
-    z-index: 100; /* Высокий приоритет отображения */
+    z-index: 100;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Затемняющий фон */
+    background-color: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
 }
@@ -145,25 +144,25 @@ body, html {
 /* Контент модального окна */
 .modal-content {
     background: linear-gradient(61deg, rgba(210,207,255,1) 0%, rgba(236,236,236,1) 37%, rgba(252,220,252,1) 100%);
-    padding: 20px;
+    padding: 15px; /* Уменьшен отступ */
     border-radius: 10px;
-    width: 90%; /* Ширина окна 90% от экрана */
-    max-width: 800px; /* Максимальная ширина окна */
+    width: 90%;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
 }
 
 /* Левая колонка с медиа (фото или видео) */
 .modal-media {
     flex: 1;
-    max-width: 100%; /* Ограничиваем до 100% ширины */
+    max-width: 100%;
 }
 
 .modal img,
 .modal video {
     max-width: 100%;
-    max-height: 300px; /* Ограничение высоты для мобильных */
+    max-height: 250px; /* Уменьшено ограничение высоты */
     border-radius: 8px;
 }
 
@@ -179,17 +178,17 @@ body, html {
 
 .modal-info p {
     margin: 0;
-    font-size: 0.9rem; /* Уменьшаем размер шрифта */
-    color: #333; /* Цвет текста */
-    line-height: 1.5; /* Межстрочный интервал */
-    text-align: justify; /* Выравнивание текста по ширине */
-    letter-spacing: 0.5px; /* Расстояние между буквами */
-    padding: 5px 0; /* Отступ сверху и снизу */
+    font-size: 0.8rem; /* Уменьшен размер шрифта */
+    color: #333;
+    line-height: 1.5;
+    text-align: justify;
+    letter-spacing: 0.5px;
+    padding: 5px 0;
 }
 
 .modal-info a {
     display: inline-block;
-    padding: 10px 15px;
+    padding: 8px 10px;
     color: rgb(0, 0, 0);
     background-color: rgb(140,133,255);
     border-radius: 5px;
@@ -208,7 +207,7 @@ body, html {
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Уменьшен размер шрифта */
     cursor: pointer;
     color: #333;
 }
@@ -217,7 +216,7 @@ body, html {
 .map {
     position: relative;
     width: 100vw;
-    height: 40vh; /* Уменьшаем высоту для мобильных */
+    height: 30vh; /* Уменьшена высота */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -227,11 +226,11 @@ body, html {
 .testimonials {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
-    padding: 20px;
+    padding: 15px; /* Уменьшено отступ */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 90%;
-    margin: 20px auto; /* Центрируем отзывы */
-    text-align: center; /* Выравнивание текста по центру */
+    margin: 10px auto;
+    text-align: center;
 }
 
 /* Кнопки для отзывов */
@@ -239,9 +238,9 @@ body, html {
     background: linear-gradient(61deg, rgba(140,133,255,1) 0%, rgba(236,236,236,1) 37%, rgba(254,169,255,1) 100%);
     border: none;
     border-radius: 5px;
-    padding: 10px 15px;
+    padding: 8px 10px; /* Уменьшены отступы */
     cursor: pointer;
-    font-size: 1rem; /* Уменьшаем размер шрифта для кнопок */
+    font-size: 1rem;
     transition: background 0.3s;
 }
 
@@ -260,43 +259,28 @@ body, html {
 
 /* Отключение стилей для больших экранов */
 @media (min-width: 769px) {
-    /* Оставляем оригинальные стили для больших экранов */
     .header-container, .projects-container, .modal, .map, .testimonials {
-        position: relative; /* Отменяем фиксированное позиционирование */
-        flex-direction: row; /* Ориентация по горизонтали для больших экранов */
+        position: relative;
+        flex-direction: row;
     }
 }
 
 /* Кнопки навигации */
 .nav-btn {
-    display: none; /* Скрыты по умолчанию */
-    position: fixed; /* Фиксированное положение */
-    top: 50%; /* Центрируем по вертикали */
-    transform: translateY(-50%); /* Сдвиг для центрирования */
+    display: block;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
     background-color: rgba(140, 133, 255, 0.8);
     color: white;
-    border: none;
-    border-radius: 50%; /* Круглая форма */
-    width: 50px; /* Ширина кнопки */
-    height: 50px; /* Высота кнопки */
-    font-size: 1.2rem; /* Размер шрифта */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1rem;
     cursor: pointer;
-    z-index: 20; /* Поверх других элементов */
+    text-align: center;
+    line-height: 40px;
 }
 
-.nav-btn#btn-left {
-    left: 10px; /* Отступ от левого края */
-}
-
-.nav-btn#btn-right {
-    right: 10px; /* Отступ от правого края */
-}
-
-/* Показать кнопки только на мобильных устройствах */
-@media (max-width: 768px) {
-    .nav-btn {
-        display: block; /* Показываем кнопки на мобильных устройствах */
-    }
-}
-
-
+.nav-btn.left { left: 10px; }
+.nav-btn.right { right: 10px; }
