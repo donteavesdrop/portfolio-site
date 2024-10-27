@@ -273,7 +273,6 @@ body, html {
 
 /* Управление и профиль разработчика */
 .controls {
-    /*position: fixed; /* Фиксируем элемент на экране */
     bottom: 150px; /* Расположение от нижнего края изменено */
     right: 20px; /* Расположение от правого края */
     background-color: rgba(0, 0, 0, 0.322); 
@@ -290,7 +289,6 @@ body, html {
 .developer-profile {
     display: flex; 
     align-items: center; 
-    /* position: fixed;  */
     bottom: 20px; /* Позиция изменена для расположения выше */
     left: 20px; 
     background-color: rgba(0, 0, 0, 0.322); 
