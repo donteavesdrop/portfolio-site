@@ -1,4 +1,3 @@
-/* Общие стили для мобильных устройств */
 body, html {
     margin: 0;
     padding: 0;
@@ -216,36 +215,10 @@ body, html {
 .map {
     position: relative;
     width: 100vw;
-    height: 40vh; /* Увеличена высота машины */
+    height: 30vh; /* Уменьшена высота */
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-/* Стили для отзывов */
-.testimonials {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    padding: 15px; /* Уменьшено отступ */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 90%;
-    margin: 10px auto;
-    text-align: center;
-}
-
-/* Кнопки для отзывов */
-.testimonial-btn {
-    background: linear-gradient(61deg, rgba(140,133,255,1) 0%, rgba(236,236,236,1) 37%, rgba(254,169,255,1) 100%);
-    border: none;
-    border-radius: 5px;
-    padding: 8px 10px; /* Уменьшены отступы */
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s;
-}
-
-.testimonial-btn:hover {
-    background: rgba(236, 236, 236, 1);
 }
 
 /* Анимация */
@@ -259,7 +232,7 @@ body, html {
 
 /* Отключение стилей для больших экранов */
 @media (min-width: 769px) {
-    .header-container, .projects-container, .modal, .map, .testimonials {
+    .header-container, .projects-container, .modal, .map {
         position: relative;
         flex-direction: row;
     }
@@ -267,22 +240,72 @@ body, html {
 
 /* Кнопки навигации */
 .nav-btn {
+    display: block;
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(140, 133, 255, 0.9);
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
+    background-color: rgba(140, 133, 255, 0.8);
     color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     font-size: 1rem;
-    z-index: 100;
+    cursor: pointer;
+    text-align: center;
+    line-height: 40px;
 }
 
-.nav-btn.left {
-    left: 20px; /* Положение кнопки слева */
+.nav-btn.left { left: 10px; }
+.nav-btn.right { right: 10px; }
+
+/* Стили машинки */
+.car {
+    width: 40px;
+    height: 40px;
+    background-image: url('images/car2.png'); /* путь к изображению машинки */
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 50px; /* Позиция сверху изменена */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Центрируем по горизонтали */
 }
 
-.nav-btn.right {
-    right: 20px; /* Положение кнопки справа */
+/* Управление и профиль разработчика */
+.controls {
+    position: fixed; /* Фиксируем элемент на экране */
+    bottom: 70px; /* Расположение от нижнего края изменено */
+    right: 20px; /* Расположение от правого края */
+    background-color: rgba(0, 0, 0, 0.322); 
+    color: white; 
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    font-size: 14px; 
+    z-index: 1000; 
+    transition: opacity 0.5s; 
+    opacity: 0.9; 
+    text-align: center;
+}
+
+.developer-profile {
+    display: flex; 
+    align-items: center; 
+    position: fixed; 
+    bottom: 20px; /* Позиция изменена для расположения выше */
+    left: 20px; 
+    background-color: rgba(0, 0, 0, 0.322); 
+    color: white; 
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
+    font-size: 14px; 
+    z-index: 1000; 
+    transition: opacity 0.5s; 
+    opacity: 1; 
+}
+
+/* Показать при наведении */
+.controls:hover,
+.developer-profile:hover {
+    opacity: 1; 
 }
