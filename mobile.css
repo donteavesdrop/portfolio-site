@@ -266,3 +266,37 @@ body, html {
         flex-direction: row; /* Ориентация по горизонтали для больших экранов */
     }
 }
+
+/* Кнопки навигации */
+.nav-btn {
+    display: none; /* Скрыты по умолчанию */
+    position: fixed; /* Фиксированное положение */
+    top: 50%; /* Центрируем по вертикали */
+    transform: translateY(-50%); /* Сдвиг для центрирования */
+    background-color: rgba(140, 133, 255, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%; /* Круглая форма */
+    width: 50px; /* Ширина кнопки */
+    height: 50px; /* Высота кнопки */
+    font-size: 1.2rem; /* Размер шрифта */
+    cursor: pointer;
+    z-index: 20; /* Поверх других элементов */
+}
+
+.nav-btn#btn-left {
+    left: 10px; /* Отступ от левого края */
+}
+
+.nav-btn#btn-right {
+    right: 10px; /* Отступ от правого края */
+}
+
+/* Показать кнопки только на мобильных устройствах */
+@media (max-width: 768px) {
+    .nav-btn {
+        display: block; /* Показываем кнопки на мобильных устройствах */
+    }
+}
+
+

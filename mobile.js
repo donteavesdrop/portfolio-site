@@ -1,33 +1,40 @@
-// Переменные для отслеживания касаний
-let startX = 0; 
-let endX = 0;
+// Переменные для отслеживания текущей позиции
+let currentIndex = 0; // Индекс текущего проекта
 
-// Функция для начала отслеживания касания
-function handleTouchStart(event) {
-    startX = event.touches[0].clientX; // Координата X начала касания
+// Функция для перемещения вперед
+function moveForward() {
+    if (currentIndex < projectData.length - 1) {
+        currentIndex++;
+        updateProjectPositions();
+    }
 }
 
-// Функция для завершения отслеживания касания
-function handleTouchEnd(event) {
-    endX = event.changedTouches[0].clientX; // Координата X конца касания
-    // Проверяем направление свайпа
-    if (startX > endX + 50) {
-        moveForward(); // Свайп влево — переходим к следующему проекту
-    } else if (startX < endX - 50) {
-        moveBackward(); // Свайп вправо — возвращаемся к предыдущему проекту
+// Функция для перемещения назад
+function moveBackward() {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateProjectPositions();
     }
 }
 
 // Обновление позиций проектов
 function updateProjectPositions() {
     projects.forEach((project, index) => {
-        project.style.transform = `translateX(${currentPosition + index * 100}vw)`; // Обновление позиции
+        project.style.transform = `translateX(${(currentIndex - index) * 100}vw)`; // Обновление позиции
+        project.style.opacity = (currentIndex === index) ? '1' : '0'; // Устанавливаем видимость
     });
 }
 
-// Добавляем слушатели событий касания к контейнеру body
-document.body.addEventListener('touchstart', handleTouchStart, false);
-document.body.addEventListener('touchend', handleTouchEnd, false);
+// Открытие модального окна при нажатии на проект
+projects.forEach((project, index) => {
+    project.addEventListener('click', () => {
+        openModal(index);
+    });
+});
+
+// Обработчики событий для кнопок навигации
+document.getElementById('btn-left').addEventListener('click', moveBackward);
+document.getElementById('btn-right').addEventListener('click', moveForward);
 
 // Открытие модального окна при нажатии на проект
 projects.forEach((project, index) => {
