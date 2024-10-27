@@ -1,105 +1,118 @@
-/* Основные стили */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f0f0f0;
-}
+/* Основные стили для мобильных устройств */
+@media (max-width: 768px) {
+    /* Основное тело */
+    body, html {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        font-family: Arial, sans-serif;
+        overflow-x: hidden;
+        height: 100vh;
+        background-image: url('images/background.jpg');
+        background-size: cover;
+        background-position: center;
+    }
 
-/* Заголовок */
-h1 {
-    margin: 20px 0;
-    font-size: 2rem;
-    text-align: center;
-}
+    /* Заголовок */
+    .header-container {
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.2rem;
+        text-align: center;
+        z-index: 10;
+    }
 
-/* Список проектов */
-.projects-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 20px 0;
-}
+    /* Список проектов */
+    .projects-container {
+        position: relative;
+        top: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 10px;
+    }
 
-/* Кнопки проектов */
-.project {
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: rgb(140, 133, 255);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-}
+    .project {
+        font-size: 1rem;
+        text-align: center;
+        padding: 5px;
+        transition: transform 4s ease, opacity 0.5s ease;
+    }
 
-.project:hover {
-    background-color: rgb(120, 113, 235);
-}
+    .project-description {
+        max-width: 90%;
+        padding: 10px;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
 
-/* Машинка */
-.map {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-}
+    /* Модальное окно */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+    }
 
-.car {
-    width: 50px;
-    height: 50px;
-    background-image: url('images/car2.png');
-    background-size: cover;
-    background-position: center;
-}
+    .modal-content {
+        background: linear-gradient(61deg, rgba(210,207,255,1) 0%, rgba(236,236,236,1) 37%, rgba(252,220,252,1) 100%);
+        padding: 15px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        text-align: center;
+    }
 
-/* Профиль разработчика */
-.developer-profile {
-    margin: 20px;
-    padding: 10px 15px;
-    background-color: rgba(0, 0, 0, 0.3);
-    color: white;
-    border-radius: 5px;
-    text-align: center;
-}
+    .modal img, .modal video {
+        max-width: 100%;
+        max-height: 200px;
+        border-radius: 8px;
+    }
 
-/* Модальное окно */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-}
+    /* Кнопка закрытия */
+    .close {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 1.5rem;
+        color: #fff;
+        cursor: pointer;
+    }
 
-/* Содержимое модального окна */
-.modal-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    max-width: 400px;
-    text-align: center;
-    position: relative;
-}
+    /* Кнопка ссылки в модальном окне */
+    .modal-info a {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        max-width: 130px;
+    }
 
-/* Кнопка закрытия */
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: #333;
-}
+    /* Контейнер для управления */
+    .controls {
+        display: none;
+    }
 
-.controls {
-    display: none; 
+    /* Профиль разработчика */
+    .developer-profile {
+        bottom: 20px;
+        left: 15px;
+        font-size: 12px;
+        padding: 10px;
+        max-width: 80%;
+        opacity: 0.9;
+    }
 }
