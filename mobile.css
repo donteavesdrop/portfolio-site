@@ -115,4 +115,33 @@
         max-width: 80%;
         opacity: 0.9;
     }
+    /* Стили для изображения профиля */
+    .profile-picture {
+    border-radius: 50%; /* Круглая форма */
+    margin-right: 10px; /* Отступ справа от изображения */
+    }
+
+/* Стили для текстовой информации */
+    .profile-info {
+    display: flex; /* Используем flexbox для выравнивания текста */
+    flex-direction: column; /* Вертикальное расположение элементов */
+    }
+
+/* Стили для ссылок */
+    .developer-profile a {
+    color: #c300ff; /* Цвет ссылок */
+    text-decoration: none; /* Убираем подчеркивание */
+    }
+
+    /* Стили для ссылок при наведении */
+    .developer-profile a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+    color: #5900ff; /* Цвет ссылок при наведении */
+    }
+
+    /* Показать при наведении */
+    .developer-profile:hover {
+    opacity: 1; /* Полная видимость при наведении */
+    }
+
 }
