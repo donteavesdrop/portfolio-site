@@ -1,5 +1,32 @@
 const projectData = [
     {
+        title: "LevelCraftAI",
+        description: `Разработка системы автоматической генерации игровых уровней на основе методов искусственного интеллекта.<br><br>
+<strong>Как работает интерфейс:</strong><br>
+1) Создание категорий ландшафта (трава, горы, река и др.) с загрузкой датасета изображений.<br>
+2) Запуск обучения модели (рекомендуется от 100 изображений на категорию).<br>
+3) Настройка распределения ландшафтов: биомы или однородная местность.<br><br>
+<strong>Цель:</strong> сократить временные и материальные ресурсы при создании игровых уровней.<br><br>
+<strong>Ключевые результаты:</strong><br>
+- Спроектирована архитектура системы;<br>
+- Реализована и протестирована генерация текстур и уровней;<br>
+- Поддержана интеграция с Unity/Pygame;<br>
+- Проект получил грантовую поддержку в Акселераторе РТУ МИРЭА и развивался в Академии Инноваторов.`,
+        type: "video",
+        videoUrl: "videos/levelcraft.mp4",
+        link: "https://github.com/donteavesdrop",
+        extraLinks: [
+            {
+                label: "Статья Naked Science",
+                url: "https://naked-science.ru/article/column/kompyuternyh-igr-na-polov"
+            },
+            {
+                label: "Публикация ТАСС",
+                url: "https://tass.ru/obschestvo/24130161"
+            }
+        ]
+    },
+    {
         title: "Android App Demo",
         description: `Это Android-приложение, разработанное на Java с использованием архитектуры MVVM. Приложение имеет боковое меню для быстрой навигации, реализованное с помощью Navigation Drawer и Navigation Component.<br><br>
 Главный экран использует View Binding для безопасного доступа к элементам интерфейса. Включены UserProfile, SensorManagerFragment, OrientationSensor и SlideshowFragment.`,
@@ -41,6 +68,7 @@ const modalVideo = document.getElementById("modalVideo");
 const modalNotebook = document.getElementById("modalNotebook");
 const modalDescription = document.getElementById("modalDescription");
 const modalLink = document.getElementById("modalLink");
+const modalLinks = document.getElementById("modalLinks");
 const closeModalBtn = document.querySelector(".close");
 
 const btnLeft = document.getElementById("btn-left");
@@ -128,6 +156,18 @@ function openModal(index) {
     clearModalMedia();
     modalDescription.innerHTML = data.description;
     modalLink.href = data.link;
+    modalLinks.innerHTML = "";
+
+    if (Array.isArray(data.extraLinks) && data.extraLinks.length > 0) {
+        data.extraLinks.forEach((item) => {
+            const anchor = document.createElement("a");
+            anchor.href = item.url;
+            anchor.target = "_blank";
+            anchor.rel = "noreferrer";
+            anchor.textContent = item.label;
+            modalLinks.appendChild(anchor);
+        });
+    }
 
     if (data.type === "image") {
         modalImg.src = data.img;

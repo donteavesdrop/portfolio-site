@@ -1,8 +1,19 @@
 :root {
     --text: #f4f6ff;
     --accent: #8c85ff;
-    --card: rgba(14, 21, 44, 0.7);
+    --card: rgba(140, 133, 255, 0.24);
     --line: rgba(255, 255, 255, 0.14);
+    --soft-surface: rgba(223, 225, 235, 0.26);
+    --soft-surface-strong: rgba(223, 225, 235, 0.36);
+    --soft-shadow:
+        rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+        rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+        rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+        rgba(0, 0, 0, 0.06) 0px 2px 1px,
+        rgba(0, 0, 0, 0.09) 0px 4px 2px,
+        rgba(0, 0, 0, 0.09) 0px 8px 4px,
+        rgba(0, 0, 0, 0.09) 0px 16px 8px,
+        rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 * {
@@ -74,43 +85,54 @@ body {
 
 .project-wrapper {
     min-width: min(88vw, 360px);
-    border: 1px solid var(--line);
-    background: var(--card);
-    border-radius: 20px;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
-    padding: 1rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: linear-gradient(155deg, var(--soft-surface-strong), var(--card));
+    border-radius: 40px;
+    backdrop-filter: blur(8px);
+    box-shadow: var(--soft-shadow);
+    padding: 1.05rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .project-wrapper.active {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 28px rgba(140, 133, 255, 0.35);
+    transform: translateY(-6px) scale(1.01);
+    background: linear-gradient(155deg, rgba(223, 225, 235, 0.44), rgba(140, 133, 255, 0.34));
+    box-shadow:
+        rgba(140, 133, 255, 0.28) 0px -23px 25px 0px inset,
+        rgba(140, 133, 255, 0.2) 0px -36px 30px 0px inset,
+        rgba(0, 0, 0, 0.16) 0px 8px 16px,
+        rgba(0, 0, 0, 0.22) 0px 18px 30px;
 }
 
 .project {
     width: 100%;
-    border: 0;
+    border: 1px solid rgba(255, 255, 255, 0.22);
     cursor: pointer;
-    border-radius: 12px;
-    padding: 0.75rem;
+    border-radius: 24px;
+    padding: 0.8rem 0.95rem;
     font-size: clamp(1rem, 2.4vw, 1.25rem);
     font-weight: 700;
     color: #f7f8ff;
-    background: linear-gradient(120deg, #8c85ff, #aa7fff);
-    transition: transform 0.2s ease, filter 0.2s ease;
+    background: linear-gradient(120deg, rgba(140, 133, 255, 0.88), rgba(170, 127, 255, 0.85));
+    box-shadow: inset 0 -8px 18px rgba(0, 0, 0, 0.22), 0 7px 18px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
 }
 
 .project:hover {
-    filter: brightness(1.07);
-    transform: translateY(-1px);
+    filter: brightness(1.09);
+    transform: translateY(-2px);
+    box-shadow: inset 0 -8px 22px rgba(0, 0, 0, 0.18), 0 11px 22px rgba(140, 133, 255, 0.24);
 }
 
 .project-description {
     margin: 0.85rem 0 0;
-    color: #d8defe;
+    color: #eef1ff;
     line-height: 1.5;
     font-size: 0.96rem;
+    background: rgba(6, 12, 31, 0.36);
+    border-radius: 22px;
+    padding: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .rocket-zone {
@@ -165,14 +187,15 @@ body {
 
 .controls,
 .developer-profile {
-    border: 1px solid var(--line);
-    background: rgba(7, 11, 24, 0.72);
-    border-radius: 16px;
-    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: linear-gradient(155deg, rgba(223, 225, 235, 0.25), rgba(140, 133, 255, 0.24));
+    border-radius: 34px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--soft-shadow);
 }
 
 .controls {
-    padding: 0.85rem 1rem;
+    padding: 1rem 1.1rem;
 }
 
 .controls h2 {
@@ -182,7 +205,7 @@ body {
 
 .controls p {
     margin: 0.45rem 0 0;
-    color: #d8defe;
+    color: #eff1ff;
 }
 
 kbd {
@@ -201,20 +224,21 @@ kbd {
 }
 
 .nav-btn {
-    border: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     cursor: pointer;
     color: #fff;
     font-weight: 700;
-    border-radius: 10px;
+    border-radius: 16px;
     padding: 0.5rem 0.9rem;
-    background: linear-gradient(120deg, #8c85ff, #aa7fff);
+    background: linear-gradient(120deg, rgba(140, 133, 255, 0.85), rgba(170, 127, 255, 0.85));
+    box-shadow: inset 0 -8px 18px rgba(0, 0, 0, 0.22), 0 7px 14px rgba(0, 0, 0, 0.19);
 }
 
 .developer-profile {
     display: flex;
     align-items: center;
     gap: 0.85rem;
-    padding: 0.7rem 0.9rem;
+    padding: 0.95rem 1rem;
 }
 
 .profile-picture {
@@ -254,16 +278,25 @@ kbd {
     width: min(980px, 100%);
     max-height: 90vh;
     overflow: auto;
-    background: #ecebff;
+    background: linear-gradient(155deg, rgba(223, 225, 235, 0.95), rgba(231, 210, 255, 0.95));
     color: #111;
-    border-radius: 14px;
-    padding: 1rem;
+    border-radius: 38px;
+    padding: 1.1rem;
+    box-shadow:
+        rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+        rgba(0, 0, 0, 0.1) 0px -46px 36px 0px inset,
+        rgba(0, 0, 0, 0.18) 0px 22px 35px;
 }
 
 .modal-body {
     display: grid;
-    grid-template-columns: minmax(230px, 1fr) 1fr;
+    grid-template-columns: minmax(380px, 1.45fr) 1fr;
     gap: 1rem;
+    align-items: start;
+}
+
+.modal-media {
+    min-width: 0;
 }
 
 .modal-media img,
@@ -271,8 +304,9 @@ kbd {
 .modal-media iframe {
     width: 100%;
     border: 0;
-    border-radius: 12px;
-    max-height: 70vh;
+    border-radius: 24px;
+    max-height: 76vh;
+    object-fit: contain;
 }
 
 .modal-info p {
@@ -284,9 +318,28 @@ kbd {
     margin-top: 0.75rem;
     text-decoration: none;
     color: #fff;
-    background: #5f59d8;
-    border-radius: 10px;
+    background: linear-gradient(120deg, rgba(140, 133, 255, 0.9), rgba(170, 127, 255, 0.85));
+    border-radius: 16px;
     padding: 0.55rem 0.9rem;
+    box-shadow: inset 0 -8px 18px rgba(0, 0, 0, 0.2), 0 7px 14px rgba(0, 0, 0, 0.18);
+}
+
+.modal-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 0.7rem;
+}
+
+.modal-links a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(120deg, rgba(140, 133, 255, 0.9), rgba(170, 127, 255, 0.85));
+    border-radius: 14px;
+    padding: 0.48rem 0.75rem;
+    font-size: 0.9rem;
+    box-shadow: inset 0 -6px 14px rgba(0, 0, 0, 0.18), 0 5px 12px rgba(0, 0, 0, 0.15);
 }
 
 .close {
@@ -304,6 +357,27 @@ kbd {
 @media (max-width: 900px) {
     .modal-body {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 1200px) {
+    .modal-content {
+        width: min(1180px, 96vw);
+    }
+
+    .modal-body {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .modal-media video,
+    .modal-media img,
+    .modal-media iframe {
+        max-height: 78vh;
+    }
+
+    .modal-info {
+        max-width: 92%;
     }
 }
 
