@@ -1,89 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2D Interactive Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
 <body>
-    <!-- Контейнер для заголовка -->
-    <div class="header-container">
-        <h1 class="glitch">
-            <span aria-hidden="true">My Projects</span>
-            My Projects
-            <span aria-hidden="true">My Projects</span>
-        </h1>
-    </div>
-    
-    <!-- Контейнер для проектов -->
-    <div id="projects-container" class="projects-container">
-        <div class="project-wrapper">
-            <button class="project btn-new" id="project1">Android-приложение на Java</button>
-            <div class="project-description">Приложение для создания постов,<br> оформления профиля<br> и прослушивания музыки <br><br> -Java</div>
-        </div>
-        <div class="project-wrapper">
-            <button class="project btn-new" id="project2">ProceduralGen</button>
-            <div class="project-description">Генерация процедурного ландшафта <br>с использованием Pygame<br><br> -Python</div>
-        </div>
-        <div class="project-wrapper">
-            <button class="project btn-new" id="project3">Hackaton front</button>
-            <div class="project-description">
-                Фронтенд-приложение<br> для управления задачами сотрудников, <br>включающее авторизацию, <br>просмотр, распределение задач и т.д.<br><br> -React</div>
-        </div>
-        <div class="project-wrapper">
-            <button class="project btn-new" id="project4">Генеративно-состязательные сети</button>
-            <div class="project-description">Использованы библиотеки   <br>PyTorch и TorchVision для обучения GAN<br><br> -Python</div>
-        </div>
-    </div>
+    <div class="page-bg"></div>
+    <main class="layout">
+        <header class="site-header">
+            <h1 class="site-title">My Projects</h1>
+            <p class="site-subtitle">Интерактивное портфолио с управлением на A / D</p>
+        </header>
 
-    <!-- Контейнер для машинки -->
-    <div class="map">
-        <div class="flame-container" style="display: none;">
-            <div class="tenor-gif-embed" data-postid="17891817" data-share-method="host" data-aspect-ratio="1" data-width="100%">
-                <a href="https://tenor.com/view/35524757372-flame-fire-purple-gif-17891817">35524757372 Flame Sticker</a> from <a href="https://tenor.com/search/35524757372-stickers">35524757372 Stickers</a>
+        <section class="scene" aria-label="Сцена с проектами">
+            <div id="projects-container" class="projects-container">
+                <article class="project-wrapper">
+                    <button class="project" id="project1">Android-приложение на Java</button>
+                    <p class="project-description">Приложение для создания постов, оформления профиля и прослушивания музыки. <strong>Java</strong></p>
+                </article>
+                <article class="project-wrapper">
+                    <button class="project" id="project2">ProceduralGen</button>
+                    <p class="project-description">Генерация процедурного ландшафта с использованием Pygame. <strong>Python</strong></p>
+                </article>
+                <article class="project-wrapper">
+                    <button class="project" id="project3">Hackaton front</button>
+                    <p class="project-description">Frontend для управления задачами сотрудников с авторизацией. <strong>React</strong></p>
+                </article>
+                <article class="project-wrapper">
+                    <button class="project" id="project4">Генеративно-состязательные сети</button>
+                    <p class="project-description">Обучение GAN на PyTorch и TorchVision. <strong>Python</strong></p>
+                </article>
             </div>
-        </div>
-        <div id="car" class="car"></div> <!-- Элемент машинки -->
-    </div>
-    
-    <!-- Скрипт для вставки гифки -->
-    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
-    <div id="projectModal" class="modal">
+            <div class="rocket-zone">
+                <div id="car" class="car" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <aside id="controls" class="controls">
+            <h2>Управление</h2>
+            <p>Нажмите <kbd>A</kbd> / <kbd>D</kbd> (или кнопки) для перемещения по проектам.</p>
+            <p>Названия проектов кликабельны.</p>
+            <div class="mobile-nav">
+                <button class="nav-btn" id="btn-left" type="button">A</button>
+                <button class="nav-btn" id="btn-right" type="button">D</button>
+            </div>
+        </aside>
+
+        <section id="developer-profile" class="developer-profile">
+            <img src="images/sticker.webp" alt="Захарова Екатерина" class="profile-picture">
+            <div class="profile-info">
+                <p>Захарова Екатерина<br>fullstack developer</p>
+                <a href="https://hh.ru/resume/4fbbdd4bff091d23030039ed1f37437332376e" target="_blank" rel="noreferrer">Резюме</a>
+                <a href="https://github.com/donteavesdrop?tab=repositories" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+        </section>
+    </main>
+
+    <div id="projectModal" class="modal" role="dialog" aria-modal="true">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <button class="close" type="button" aria-label="Закрыть">&times;</button>
             <div class="modal-body">
                 <div class="modal-media">
                     <img id="modalImg" src="" alt="Project Image" style="display: none;">
                     <video id="modalVideo" controls style="display: none;"></video>
-                    <iframe id="modalNotebook" src="" style="display: none; width: 100%; height: 600px; border: none;"></iframe>
+                    <iframe id="modalNotebook" src="" style="display: none;"></iframe>
                 </div>
                 <div class="modal-info">
                     <p id="modalDescription"></p>
-                    <a id="modalLink" href="#" target="_blank">Ссылка на проект</a>
+                    <a id="modalLink" href="#" target="_blank" rel="noreferrer">Ссылка на проект</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="controls" class="controls">
-        УПРАВЛЕНИЕ <br><br> Нажмите "D" для просмотра следующего проекта, "A" - для предыдущего проекта<br>  и ракета полетит в нужном вам направлении :З<br> <br>  Названия проектов кликабельны
-    </div>
-
-    <div id="developer-profile" class="developer-profile">
-        <img src="images/sticker.webp" alt="Ваше имя" class="profile-picture"> <!-- Замените на свой путь к изображению -->
-        <div class="profile-info">
-            <p>Захарова Екатерина<br> fullstack developer</p>
-            <a href="https://hh.ru/resume/4fbbdd4bff091d23030039ed1f37437332376e" target="_blank">Резюме</a>  
-            <a href="https://github.com/donteavesdrop?tab=repositories" target="_blank">GitHub</a>
-        </div>
-    </div>
-    <button class="nav-btn" id="btn-left"  style="display: none">A</button>
-    <button class="nav-btn" id="btn-right" style="display: none">B</button>
-    <!-- Подключаем новый основной JavaScript файл -->
     <script src="main.js"></script>
-
 </body>
 </html>
